@@ -1,6 +1,7 @@
 import random
 
 from model.AI import AI
+from model.Board import Board
 from model.DifficultyLevel import DifficultyLevel
 from model.Player import Player
 
@@ -49,3 +50,16 @@ def game_start(board, current_player, game_mode, player1, player2):
             break
 
         current_player = player2 if current_player == player1 else player1
+
+
+def play_tic_tac_toe():
+    while True:
+        game_mode = input("Choose game mode: 1 for Player vs Player, 2 for Player vs AI: ")
+        player1, player2 = game_setup(game_mode)
+        board = Board()
+        current_player = player1
+        game_start(board, current_player, game_mode, player1, player2)
+
+        play_again = input("Play again? (yes/no): ")
+        if play_again.lower() != 'yes':
+            break
