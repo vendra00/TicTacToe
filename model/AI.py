@@ -1,5 +1,6 @@
 import random
 
+from model.DifficultRatioAI import DifficultRatioAI
 from model.DifficultyLevel import DifficultyLevel
 
 
@@ -11,29 +12,35 @@ class AI:
 
     def make_move(self, board):
         if self.difficulty == DifficultyLevel.EASY:
+            print("AI easy...")
             return self.easy_move(board)
         elif self.difficulty == DifficultyLevel.NORMAL:
+            print("AI normal...")
             return self.normal_move(board)
         elif self.difficulty == DifficultyLevel.HARD:
+            print("AI hard...")
             return self.hard_move(board)
 
     @staticmethod
     def easy_move(board):
+        print("AI dumb...")
         empty_cells = [(i, j) for i in range(3) for j in range(3) if board.board[i][j] == ' ']
         return random.choice(empty_cells) if empty_cells else (None, None)
 
     def normal_move(self, board):
-        if random.random() < 0.55:
+        if random.random() < DifficultRatioAI.NORMAL.value:
             best_move = self.best_move(board)
             if best_move:
                 return best_move
         return AI.easy_move(board)  # Fallback to a random move
 
     def hard_move(self, board):
-        if random.random() < 0.70:
+        if random.random() < DifficultRatioAI.HARD.value:
             best_move = self.best_move(board)
             if best_move:
+                print("AI best move...")
                 return best_move
+        print("AI random move...")
         return AI.easy_move(board)
 
     def best_move(self, board):

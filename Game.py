@@ -47,8 +47,8 @@ def player_two_setup():
 def game_start(board, current_player, game_mode, player1, player2):
     while True:
         board.print_board()
-        if current_player == player2 and game_mode != '1':
-            row, col = simple_ai_move(board)
+        if isinstance(current_player, AI):
+            row, col = current_player.make_move(board)  # Use AI's make_move method
             print(f"AI chose row {row}, column {col}")
         else:
             row, col = current_player.make_move(board)
