@@ -3,7 +3,10 @@ import random
 from model.AI import AI
 from model.Board import Board
 from model.DifficultyLevel import DifficultyLevel
+from model.GameMode import GameMode
 from model.Player import Player
+from model.Symbol import Symbol
+from utils.Validators import validate_game_mode_input
 
 
 def simple_ai_move(board):
@@ -13,16 +16,32 @@ def simple_ai_move(board):
 
 def game_setup(game_mode):
     player1_name = input("Enter name for Player 1: ")
-    player1 = Player(player1_name, 'X')
-    if game_mode == '1':
-        player2_name = input("Enter name for Player 2: ")
-        player2 = Player(player2_name, 'O')
-    else:
-        difficulty = input("Choose AI difficulty: 1 for EASY, 2 for NORMAL, 3 for HARD: ")
-        difficulty_level = DifficultyLevel([DifficultyLevel.EASY, DifficultyLevel.NORMAL, DifficultyLevel.HARD]
-                                           [int(difficulty) - 1])
-        player2 = AI(difficulty_level, 'O')  # Pass 'O' as the symbol for the AI
+    player1 = Player(player1_name, Symbol.CROSS.value)
+    player2 = game_mode_setup(game_mode)
     return player1, player2
+
+
+def game_mode_setup(game_mode):
+    if game_mode == GameMode.Multiplayer.value:
+        player2 = player_two_setup()
+        return player2
+    if game_mode == GameMode.SinglePlayer.value:
+        player2 = ai_difficult_setup()
+        return player2
+
+
+def ai_difficult_setup():
+    difficulty = input("Choose AI difficulty: 1 for EASY, 2 for NORMAL, 3 for HARD: ")
+    difficulty_level = DifficultyLevel([DifficultyLevel.EASY, DifficultyLevel.NORMAL, DifficultyLevel.HARD]
+                                       [int(difficulty) - 1])
+    player2 = AI(difficulty_level, Symbol.CIRCLE.value)
+    return player2
+
+
+def player_two_setup():
+    player2_name = input("Enter name for Player 2: ")
+    player2 = Player(player2_name, Symbol.CIRCLE.value)
+    return player2
 
 
 def game_start(board, current_player, game_mode, player1, player2):
@@ -54,10 +73,18 @@ def game_start(board, current_player, game_mode, player1, player2):
 
 def play_tic_tac_toe():
     while True:
-        game_mode = input("Choose game mode: 1 for Player vs Player, 2 for Player vs AI: ")
+        while True:
+            game_mode_input = input("Choose game mode: 1 for Player vs Player, 2 for Player vs AI: ")
+            if validate_game_mode_input(game_mode_input):
+                game_mode = int(game_mode_input)
+                break
+            else:
+                print("Invalid input. Please enter 1 for Player vs Player or 2 for Player vs AI.")
+
         player1, player2 = game_setup(game_mode)
         board = Board()
         current_player = player1
+
         game_start(board, current_player, game_mode, player1, player2)
 
         play_again = input("Play again? (yes/no): ")

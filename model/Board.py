@@ -29,10 +29,10 @@ class Board:
             if all(cell == symbol for cell in self.board[i]) or \
                     all(self.board[j][i] == symbol for j in range(3)):
                 return True
-        if (self.board[0][0] != self.board[1][1] or self.board[1][1] != self.board[2][2] or self.board[2][
-            2] != symbol) and (
-                self.board[0][2] != self.board[1][1] or self.board[1][1] != self.board[2][0] or self.board[2][
-            0] != symbol):
+        if ((self.board[0][0] != self.board[1][1] or self.board[1][1] != self.board[2][2]
+             or self.board[2][2] != symbol)
+                and (self.board[0][2] != self.board[1][1] or self.board[1][1] != self.board[2][0]
+                     or self.board[2][0] != symbol)):
             return False
         # Check diagonals
         return True
