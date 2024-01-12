@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c65578-42ff-4117-b6f4-0ebd7b220866" name="Changes" comment="bug fix for AI difficulty">
-      <change afterPath="$PROJECT_DIR$/model/enums/BoardStructure.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/enums/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/BoardUtils.py" afterDir="false" />
+    <list default="true" id="75c65578-42ff-4117-b6f4-0ebd7b220866" name="Changes" comment="gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AI.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/AI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Board.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/Board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/DifficultRatioAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/DifficultRatioAI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/DifficultyLevel.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/DifficultyLevel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/GameMode.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/GameMode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/PiecePosition.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/PiecePosition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/Player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Symbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/Symbol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/Validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/Validators.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +106,7 @@
       <workItem from="1704893872159" duration="23000" />
       <workItem from="1704894156650" duration="68000" />
       <workItem from="1704894254829" duration="6288000" />
-      <workItem from="1704961272803" duration="6281000" />
+      <workItem from="1704961272803" duration="7722000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -167,7 +156,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704900513870</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="validators and colors implementation">
+      <option name="closed" value="true" />
+      <created>1705073090565</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1705073090566</updated>
+    </task>
+    <task id="LOCAL-00008" summary="gitignore">
+      <option name="closed" value="true" />
+      <created>1705073524978</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1705073524978</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,10 +185,12 @@
     <MESSAGE value="readme improvments" />
     <MESSAGE value="improvements" />
     <MESSAGE value="bug fix for AI difficulty" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix for AI difficulty" />
+    <MESSAGE value="validators and colors implementation" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TicTacToeGame$main.coverage" NAME="main Coverage Results" MODIFIED="1705072883129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TicTacToeGame$main.coverage" NAME="main Coverage Results" MODIFIED="1705074371688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TicTacToegame$main.coverage" NAME="main Coverage Results" MODIFIED="1704888197076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

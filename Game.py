@@ -8,7 +8,8 @@ from model.enums.DifficultyLevel import DifficultyLevel
 from model.enums.GameMode import GameMode
 from model.enums.PiecePosition import PiecePosition
 from model.enums.Symbol import Symbol
-from utils.Validators import validate_game_mode_input, validate_player_move_input, validate_difficulty_level_input
+from utils.Validators import validate_game_mode_input, validate_player_move_input, validate_difficulty_level_input, \
+    validate_replay_input
 
 
 def clear_screen():
@@ -100,9 +101,17 @@ def play_tic_tac_toe():
 
         game_start(board, current_player, game_mode, player1, player2)
 
-        play_again = input("Play again? (yes/no): ")
-        if play_again.lower() != 'yes':
-            break
+        while True:
+            play_again = input("Play again? (yes/no): ")
+            if validate_replay_input(play_again):
+                if play_again.lower() in ['yes', 'y']:
+                    break
+
+                else:
+                    print("Thanks for playing!")
+                    return
+            else:
+                print("Invalid input. Please answer 'yes' or 'no'.")
 
 
 def get_player_move(current_player, board):
