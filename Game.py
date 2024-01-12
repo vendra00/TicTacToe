@@ -9,6 +9,7 @@ from model.enums.GameMode import GameMode
 from model.enums.I18N import I18N
 from model.enums.PiecePosition import PiecePosition
 from model.enums.Symbol import Symbol
+from utils.SoundController import play_sound, play_midi_file
 from utils.Validators import validate_game_mode_input, validate_player_move_input, validate_difficulty_level_input, \
     validate_replay_input
 
@@ -25,6 +26,7 @@ def simple_ai_move(board):
 def game_setup(game_mode):
     player1_name = input(I18N.P1_NAME_REGISTER.value)
     player1 = Player(player1_name, Symbol.CROSS.value)
+    play_sound('select')
     player2 = game_mode_setup(game_mode)
     return player1, player2
 
@@ -46,6 +48,7 @@ def ai_difficult_setup():
         if validate_difficulty_level_input(difficulty_input):
             # Convert the valid input to the DifficultyLevel enum
             difficulty_level = DifficultyLevel(int(difficulty_input))
+            play_sound('select')
             break
         else:
             print(I18N.INVALID_DIFFICULTY_LEVEL.value)
@@ -56,6 +59,7 @@ def ai_difficult_setup():
 def player_two_setup():
     player2_name = input(I18N.P2_NAME_REGISTER.value)
     player2 = Player(player2_name, Symbol.CIRCLE.value)
+    play_sound('select')
     return player2
 
 
@@ -75,23 +79,27 @@ def game_start(board, current_player, player1, player2):
         if board.check_tie():
             board.print_board()
             print(I18N.GAME_TIE.value)
+            play_sound('draw')
             break
 
         if board.is_winner(current_player.symbol):
             board.print_board()
             winner_name = current_player.name if isinstance(current_player, Player) else I18N.AI.value
             print(f"{winner_name} {I18N.WIN.value}")
+            play_sound('victory')
             break
 
         current_player = player2 if current_player == player1 else player1
 
 
 def play_tic_tac_toe():
+    play_midi_file('files/midi/Crystal_Doom.mid')
     while True:
         while True:
             game_mode_input = input(I18N.GAME_MODE.value)
             if validate_game_mode_input(game_mode_input):
                 game_mode = int(game_mode_input)
+                play_sound('select')
                 break
             else:
                 print(I18N.INVALID_GAME_MODE.value)
@@ -106,10 +114,12 @@ def play_tic_tac_toe():
             play_again = input(I18N.REPLAY.value)
             if validate_replay_input(play_again):
                 if play_again.lower() in ['yes', 'y']:
+                    play_sound('select')
                     break
 
                 else:
                     print(I18N.THANKS.value)
+                    play_sound('select')
                     return
             else:
                 print(I18N.INVALID_REPLAY_INPUT.value)
@@ -123,9 +133,11 @@ def get_player_move(current_player, board):
             if validate_player_move_input(move_input, board):
                 # Convert the input to the PiecePosition enum
                 move_position = PiecePosition(int(move_input))
+                play_sound('valid_move')
                 return move_position
             else:
                 print(I18N.INVALID_POSITION.value)
+                play_sound('invalid_move')
 
         except ValueError:
             print(I18N.INVALID_POSITION.value)

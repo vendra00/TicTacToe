@@ -4,7 +4,11 @@ from enum import Enum
 class I18N(Enum):
     P1_NAME_REGISTER = "Enter name for Player 1: "
     P2_NAME_REGISTER = "Enter name for Player 2: "
-    CHOSE_AI_DIFFICULTY = "Choose AI difficulty: 1 for EASY, 2 for NORMAL, 3 for HARD: "
+    CHOSE_AI_DIFFICULTY = ("Choose AI difficulty: "
+                           "\n    \033[92m1 - EASY\033[0m"  # Green for EASY
+                           "\n    \033[93m2 - NORMAL\033[0m"  # Yellow for NORMAL
+                           "\n    \033[91m3 - HARD\033[0m"  # Red for HARD
+                           "\n Your choice: ")
     INVALID_DIFFICULTY_LEVEL = ("Invalid input. Please enter a valid difficulty level: 1 for EASY, 2 for NORMAL, "
                                 "3 for HARD.")
     INVALID_MOVE = "Invalid move, try again."

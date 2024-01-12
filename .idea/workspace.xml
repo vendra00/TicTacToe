@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c65578-42ff-4117-b6f4-0ebd7b220866" name="Changes" comment="validators part 2">
-      <change afterPath="$PROJECT_DIR$/model/enums/I18N.py" afterDir="false" />
+    <list default="true" id="75c65578-42ff-4117-b6f4-0ebd7b220866" name="Changes" comment="I18N and bug fix for the board position 9">
+      <change afterPath="$PROJECT_DIR$/files/midi/Crystal_Doom.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/wav/invalid_move.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/wav/selection.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/wav/valid_move.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/wav/victory.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/wav/victory2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/SoundController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enums/I18N.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/I18N.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/BoardUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/BoardUtils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +54,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/g.vendramini/PycharmProjects/TicTacToeGame/files/midi",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,7 +65,11 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\g.vendramini\PycharmProjects\TicTacToeGame\files\midi" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\g.vendramini\PycharmProjects\TicTacToeGame\files\wav" />
       <recent name="C:\Users\g.vendramini\PycharmProjects\TicTacToeGame\model\enums" />
     </key>
   </component>
@@ -106,7 +119,7 @@
       <workItem from="1704893872159" duration="23000" />
       <workItem from="1704894156650" duration="68000" />
       <workItem from="1704894254829" duration="6288000" />
-      <workItem from="1704961272803" duration="8893000" />
+      <workItem from="1704961272803" duration="15155000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -180,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705074705883</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="I18N and bug fix for the board position 9">
+      <option name="closed" value="true" />
+      <created>1705076373864</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1705076373865</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,10 +217,11 @@
     <MESSAGE value="validators and colors implementation" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="validators part 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="validators part 2" />
+    <MESSAGE value="I18N and bug fix for the board position 9" />
+    <option name="LAST_COMMIT_MESSAGE" value="I18N and bug fix for the board position 9" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TicTacToeGame$main.coverage" NAME="main Coverage Results" MODIFIED="1705075494911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TicTacToeGame$main.coverage" NAME="main Coverage Results" MODIFIED="1705098315796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TicTacToegame$main.coverage" NAME="main Coverage Results" MODIFIED="1704888197076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

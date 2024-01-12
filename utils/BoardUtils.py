@@ -1,3 +1,4 @@
+
 def colorize(cell):
     if cell == 'X':
         return f'\033[91m{cell}\033[0m'  # Red for 'X'
