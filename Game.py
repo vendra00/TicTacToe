@@ -1,12 +1,18 @@
+import os
 import random
 
 from model.AI import AI
 from model.Board import Board
-from model.DifficultyLevel import DifficultyLevel
-from model.GameMode import GameMode
 from model.Player import Player
-from model.Symbol import Symbol
-from utils.Validators import validate_game_mode_input
+from model.enums.DifficultyLevel import DifficultyLevel
+from model.enums.GameMode import GameMode
+from model.enums.PiecePosition import PiecePosition
+from model.enums.Symbol import Symbol
+from utils.Validators import validate_game_mode_input, validate_player_move_input, validate_difficulty_level_input
+
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def simple_ai_move(board):
@@ -31,9 +37,16 @@ def game_mode_setup(game_mode):
 
 
 def ai_difficult_setup():
-    difficulty = input("Choose AI difficulty: 1 for EASY, 2 for NORMAL, 3 for HARD: ")
-    difficulty_level = DifficultyLevel([DifficultyLevel.EASY, DifficultyLevel.NORMAL, DifficultyLevel.HARD]
-                                       [int(difficulty) - 1])
+    while True:
+        difficulty_input = input("Choose AI difficulty: 1 for EASY, 2 for NORMAL, 3 for HARD: ")
+
+        # Check if the input is a valid difficulty level
+        if validate_difficulty_level_input(difficulty_input):
+            # Convert the valid input to the DifficultyLevel enum
+            difficulty_level = DifficultyLevel(int(difficulty_input))
+            break
+        else:
+            print("Invalid input. Please enter a valid difficulty level: 1 for EASY, 2 for NORMAL, 3 for HARD.")
     player2 = AI(difficulty_level, Symbol.CIRCLE.value)
     return player2
 
@@ -48,10 +61,10 @@ def game_start(board, current_player, game_mode, player1, player2):
     while True:
         board.print_board()
         if isinstance(current_player, AI):
-            row, col = current_player.make_move(board)  # Use AI's make_move method
-            print(f"AI chose row {row}, column {col}")
-        else:
             row, col = current_player.make_move(board)
+        else:
+            move_position = get_player_move(current_player, board)
+            row, col = position_to_coordinates(move_position)
 
         if not board.make_move(row, col, current_player.symbol):
             print("Invalid move, try again.")
@@ -90,3 +103,26 @@ def play_tic_tac_toe():
         play_again = input("Play again? (yes/no): ")
         if play_again.lower() != 'yes':
             break
+
+
+def get_player_move(current_player, board):
+    while True:
+        try:
+            move_input = input(f"{current_player.name} ({current_player.symbol}), choose a position (1-9): ")
+            # Check if the input is valid
+            if validate_player_move_input(move_input, board):
+                # Convert the input to the PiecePosition enum
+                move_position = PiecePosition(int(move_input))
+                return move_position
+            else:
+                print(
+                    "Invalid input or position already taken. Please enter a number between 1 and 9 for an empty spot.")
+
+        except ValueError:
+            print("Invalid input. Please enter a number between 1 and 9 for an empty spot.")
+
+
+def position_to_coordinates(position):
+    row = (position.value - 1) // 3
+    col = (position.value - 1) % 3
+    return row, col

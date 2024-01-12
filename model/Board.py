@@ -1,4 +1,7 @@
 # model/Board.py
+from model.enums.BoardStructure import BoardStructure
+from utils.BoardUtils import colorize
+
 
 class Board:
     def __init__(self):
@@ -19,9 +22,20 @@ class Board:
         return False
 
     def print_board(self):
-        for row in self.board:
-            print(" | ".join(row))
-            print("-" * 5)
+
+        print("                    ")
+        print(BoardStructure.TOP_BORDER.value)
+
+        for i, row in enumerate(self.board):
+            # Print the row with colorized cells
+            row_str = ' ' + ' │ '.join(colorize(cell) for cell in row) + ' '
+            print(f"{BoardStructure.VERTICAL_LINE.value}{row_str}{BoardStructure.VERTICAL_LINE.value}")
+
+            # Print the middle border or bottom border
+            if i < 2:  # Only print middle borders after the first and second row
+                print(BoardStructure.MIDDLE_BORDER.value)
+            else:
+                print(BoardStructure.BOTTOM_BORDER.value)
 
     def is_winner(self, symbol):
         # Check rows and columns

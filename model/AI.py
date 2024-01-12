@@ -1,7 +1,7 @@
 import random
 
-from model.DifficultRatioAI import DifficultRatioAI
-from model.DifficultyLevel import DifficultyLevel
+from model.enums.DifficultRatioAI import DifficultRatioAI
+from model.enums.DifficultyLevel import DifficultyLevel
 
 
 class AI:

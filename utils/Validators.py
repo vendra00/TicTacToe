@@ -1,5 +1,5 @@
-from model.DifficultyLevel import DifficultyLevel
-from model.GameMode import GameMode
+from model.enums.DifficultyLevel import DifficultyLevel
+from model.enums.GameMode import GameMode
 
 
 def validate_game_mode_input(input_str):
