@@ -17,5 +17,10 @@ def validate_replay_input(input_str):
 def validate_player_move_input(input_str, board):
     if not input_str.isdigit():
         return False
-    position = int(input_str)
-    return 0 <= position < len(board.board) * len(board.board[0]) and board.board[position // 3][position % 3] == ' '
+    position = int(input_str) - 1  # Subtract 1 to convert to 0-indexed position
+    if not 0 <= position <= 8:  # Ensure the position is within the 0-8 range
+        return False
+    # Convert position to row and column, then check if the cell is empty
+    row, col = position // 3, position % 3
+    return board.board[row][col] == ' '
+

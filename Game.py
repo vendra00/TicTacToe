@@ -6,6 +6,7 @@ from model.Board import Board
 from model.Player import Player
 from model.enums.DifficultyLevel import DifficultyLevel
 from model.enums.GameMode import GameMode
+from model.enums.I18N import I18N
 from model.enums.PiecePosition import PiecePosition
 from model.enums.Symbol import Symbol
 from utils.Validators import validate_game_mode_input, validate_player_move_input, validate_difficulty_level_input, \
@@ -22,7 +23,7 @@ def simple_ai_move(board):
 
 
 def game_setup(game_mode):
-    player1_name = input("Enter name for Player 1: ")
+    player1_name = input(I18N.P1_NAME_REGISTER.value)
     player1 = Player(player1_name, Symbol.CROSS.value)
     player2 = game_mode_setup(game_mode)
     return player1, player2
@@ -39,7 +40,7 @@ def game_mode_setup(game_mode):
 
 def ai_difficult_setup():
     while True:
-        difficulty_input = input("Choose AI difficulty: 1 for EASY, 2 for NORMAL, 3 for HARD: ")
+        difficulty_input = input(I18N.CHOSE_AI_DIFFICULTY.value)
 
         # Check if the input is a valid difficulty level
         if validate_difficulty_level_input(difficulty_input):
@@ -47,18 +48,18 @@ def ai_difficult_setup():
             difficulty_level = DifficultyLevel(int(difficulty_input))
             break
         else:
-            print("Invalid input. Please enter a valid difficulty level: 1 for EASY, 2 for NORMAL, 3 for HARD.")
+            print(I18N.INVALID_DIFFICULTY_LEVEL.value)
     player2 = AI(difficulty_level, Symbol.CIRCLE.value)
     return player2
 
 
 def player_two_setup():
-    player2_name = input("Enter name for Player 2: ")
+    player2_name = input(I18N.P2_NAME_REGISTER.value)
     player2 = Player(player2_name, Symbol.CIRCLE.value)
     return player2
 
 
-def game_start(board, current_player, game_mode, player1, player2):
+def game_start(board, current_player, player1, player2):
     while True:
         board.print_board()
         if isinstance(current_player, AI):
@@ -68,18 +69,18 @@ def game_start(board, current_player, game_mode, player1, player2):
             row, col = position_to_coordinates(move_position)
 
         if not board.make_move(row, col, current_player.symbol):
-            print("Invalid move, try again.")
+            print(I18N.INVALID_MOVE.value)
             continue
 
         if board.check_tie():
             board.print_board()
-            print("It's a tie!")
+            print(I18N.GAME_TIE.value)
             break
 
         if board.is_winner(current_player.symbol):
             board.print_board()
-            winner_name = current_player.name if isinstance(current_player, Player) else "AI"
-            print(f"{winner_name} wins!")
+            winner_name = current_player.name if isinstance(current_player, Player) else I18N.AI.value
+            print(f"{winner_name} {I18N.WIN.value}")
             break
 
         current_player = player2 if current_player == player1 else player1
@@ -88,47 +89,46 @@ def game_start(board, current_player, game_mode, player1, player2):
 def play_tic_tac_toe():
     while True:
         while True:
-            game_mode_input = input("Choose game mode: 1 for Player vs Player, 2 for Player vs AI: ")
+            game_mode_input = input(I18N.GAME_MODE.value)
             if validate_game_mode_input(game_mode_input):
                 game_mode = int(game_mode_input)
                 break
             else:
-                print("Invalid input. Please enter 1 for Player vs Player or 2 for Player vs AI.")
+                print(I18N.INVALID_GAME_MODE.value)
 
         player1, player2 = game_setup(game_mode)
         board = Board()
         current_player = player1
 
-        game_start(board, current_player, game_mode, player1, player2)
+        game_start(board, current_player, player1, player2)
 
         while True:
-            play_again = input("Play again? (yes/no): ")
+            play_again = input(I18N.REPLAY.value)
             if validate_replay_input(play_again):
                 if play_again.lower() in ['yes', 'y']:
                     break
 
                 else:
-                    print("Thanks for playing!")
+                    print(I18N.THANKS.value)
                     return
             else:
-                print("Invalid input. Please answer 'yes' or 'no'.")
+                print(I18N.INVALID_REPLAY_INPUT.value)
 
 
 def get_player_move(current_player, board):
     while True:
         try:
-            move_input = input(f"{current_player.name} ({current_player.symbol}), choose a position (1-9): ")
+            move_input = input(f"{current_player.name} ({current_player.symbol}), {I18N.CHOSE_POSITION.value}")
             # Check if the input is valid
             if validate_player_move_input(move_input, board):
                 # Convert the input to the PiecePosition enum
                 move_position = PiecePosition(int(move_input))
                 return move_position
             else:
-                print(
-                    "Invalid input or position already taken. Please enter a number between 1 and 9 for an empty spot.")
+                print(I18N.INVALID_POSITION.value)
 
         except ValueError:
-            print("Invalid input. Please enter a number between 1 and 9 for an empty spot.")
+            print(I18N.INVALID_POSITION.value)
 
 
 def position_to_coordinates(position):
