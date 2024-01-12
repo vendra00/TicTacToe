@@ -29,6 +29,7 @@ load_sound('invalid_move', 'files/wav/invalid_move.wav')
 load_sound('victory', 'files/wav/victory2.wav')
 load_sound('draw', 'files/wav/draw.wav')
 load_sound('select', 'files/wav/selection.wav')
+load_sound('hard', 'files/wav/hard.wav')
 
 
 def play_midi_file(midi_file_path):

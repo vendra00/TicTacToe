@@ -49,6 +49,8 @@ def ai_difficult_setup():
             # Convert the valid input to the DifficultyLevel enum
             difficulty_level = DifficultyLevel(int(difficulty_input))
             play_sound('select')
+            if difficulty_level == DifficultyLevel.HARD:
+                play_sound('hard')
             break
         else:
             print(I18N.INVALID_DIFFICULTY_LEVEL.value)
