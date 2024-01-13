@@ -51,6 +51,7 @@ class I18N(Enum):
     GAME_MODE = ("\033[1m      Choose Game Mode: \033[0m"
                  "\n        1 - Multiplayer (Local)"
                  "\n        2 - Single Player"
+                 "\n        3 - Multiplayer (Remote)"
                  "\n        0 - Exit"
                  "\n        Your choice: ")
     """ Prompt for choosing the game mode. """
@@ -76,3 +77,33 @@ class I18N(Enum):
 
     AI_TURN = "AI is thinking..."
     """ Message for when the AI is thinking. """
+
+    HOST_IP = "Enter the host's IP address: "
+    """ Prompt for entering the host's IP address. """
+
+    HOST_PORT = "Enter the host's port: "
+    """ Prompt for entering the host's port. """
+
+    JOIN_GAME = "Joining game..."
+    """ Message for when the player is joining a game. """
+
+    CREATE_GAME = "Creating game..."
+    """ Message for when the player is creating a game. """
+
+    CONNECTED = "Connected!"
+    """ Message for when the player is connected to the remote player. """
+
+    WAITING_PLAYER_CONNECT = "Waiting for other player to connect..."
+    """ Message for when the player is waiting for the other player to connect. """
+
+    REMOTE_PROMPT = "\033[1m      Do you want to (4) host or (5) join a game?  \033[0m"
+    """ Prompt for choosing to host or join a game. """
+
+    FAILED_TO_CONNECT = "Failed to connect. Please check the IP address and port and try again."
+    """ Error message for failed connection. """
+
+    INVALID_REMOTE_INPUT = "Invalid input. Please enter 4 to host a game or 5 to join a game."
+    """ Error message for invalid remote input. """
+
+    GAME_HOSTED = "Game hosted at {host_ip}:{host_port}"
+    """ Message for when the game is hosted. """

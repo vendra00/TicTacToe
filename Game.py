@@ -10,6 +10,7 @@ from model.enums.GameMode import GameMode
 from model.enums.I18N import I18N
 from model.enums.PiecePosition import PiecePosition
 from model.enums.Symbol import Symbol
+from utils.NetworkUtils import start_host, join_game, get_host_details
 from utils.SoundController import play_sound, play_midi_file
 from utils.Validators import validate_game_mode_input, validate_player_move_input, validate_difficulty_level_input, \
     validate_replay_input
@@ -46,6 +47,32 @@ def game_setup(game_mode):
     return player1, player2
 
 
+def remote_game_setup():
+    """
+    Sets up a remote multiplayer game by either hosting a new game or joining an existing one.
+
+    Returns:
+        socket: The network socket connected to the remote player.
+    """
+    while True:
+        remote_choice = input(I18N.REMOTE_PROMPT.value)
+        if int(remote_choice) == GameMode.CREATE_GAME.value:
+            public_ip, host_port = get_host_details()
+            print(I18N.GAME_HOSTED.value.format(host_ip=public_ip, host_port=host_port))
+            print(I18N.WAITING_PLAYER_CONNECT.value)
+            return start_host()
+        elif int(remote_choice) == GameMode.JOIN_GAME.value:
+            host_ip = input(I18N.HOST_IP.value)
+            host_port = int(input(I18N.HOST_PORT.value))
+            try:
+                print(I18N.JOIN_GAME.value)
+                return join_game(host_ip, host_port)
+            except ConnectionError:
+                print(I18N.FAILED_TO_CONNECT.value)
+        else:
+            print(I18N.INVALID_REMOTE_INPUT.value)
+
+
 def game_mode_setup(game_mode):
     """
     Configures the second player based on the game mode.
@@ -56,10 +83,12 @@ def game_mode_setup(game_mode):
     Returns:
         Player or None: The second player, either a human or an AI, or None if exiting the game.
     """
-    if game_mode == GameMode.Multiplayer.value:
+    if game_mode == GameMode.MULTIPLAYER.value:
         return player_two_setup()
-    elif game_mode == GameMode.SinglePlayer.value:
+    elif game_mode == GameMode.SINGLE_PLAYER.value:
         return ai_difficult_setup()
+    elif game_mode == GameMode.REMOTE_MULTIPLAYER.value:
+        return remote_game_setup()
     elif game_mode == GameMode.EXIT.value:
         print(I18N.THANKS.value)
         return None
