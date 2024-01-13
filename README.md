@@ -1,4 +1,4 @@
-# Tic Tac Toe Game
+# Tic Tac Toe Game Rage
 
 Reto 1 (6/1/2024) - 3 puntos + 2 opcionales (1 funcionalidades / 1 creatividad)
 
