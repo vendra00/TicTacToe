@@ -49,17 +49,18 @@ def game_mode_setup(game_mode):
     Configures the second player based on the game mode.
 
     Args:
-        game_mode (int): The game mode (multiplayer or single player).
+        game_mode (int): The game mode (multiplayer or single player or exit game).
 
     Returns:
-        Player: The second player, either a human or an AI.
+        Player or None: The second player, either a human or an AI, or None if exiting the game.
     """
     if game_mode == GameMode.Multiplayer.value:
-        player2 = player_two_setup()
-        return player2
-    if game_mode == GameMode.SinglePlayer.value:
-        player2 = ai_difficult_setup()
-        return player2
+        return player_two_setup()
+    elif game_mode == GameMode.SinglePlayer.value:
+        return ai_difficult_setup()
+    elif game_mode == GameMode.EXIT.value:
+        print(I18N.THANKS.value)
+        return None
 
 
 def ai_difficult_setup():
@@ -149,6 +150,9 @@ def play_tic_tac_toe():
             if validate_game_mode_input(game_mode_input):
                 game_mode = int(game_mode_input)
                 play_sound('select')
+                if game_mode == GameMode.EXIT.value:
+                    print(I18N.THANKS.value)
+                    return
                 break
             else:
                 print(I18N.INVALID_GAME_MODE.value)
@@ -164,6 +168,7 @@ def play_tic_tac_toe():
             if validate_replay_input(play_again):
                 if play_again.lower() in ['yes', 'y']:
                     play_sound('select')
+                    print(I18N.TITLE.value)
                     break
 
                 else:

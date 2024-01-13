@@ -49,8 +49,9 @@ class I18N(Enum):
     """ String constant for the AI player. """
 
     GAME_MODE = ("\033[1m      Choose Game Mode: \033[0m"
-                 "\n        1 - for Player vs Player, "
-                 "\n        2 - for Player vs AI "
+                 "\n        1 - Multiplayer (Local)"
+                 "\n        2 - Single Player"
+                 "\n        0 - Exit"
                  "\n        Your choice: ")
     """ Prompt for choosing the game mode. """
 

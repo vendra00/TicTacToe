@@ -8,6 +8,9 @@ class GameMode(Enum):
     GameMode is an enumeration of the different game modes available in the Tic Tac Toe game.
     """
 
+    EXIT = 0
+    """ The exit game mode where the game is terminated. """
+
     Multiplayer = 1
     """ The multiplayer game mode where two human players play against each other. """
 
