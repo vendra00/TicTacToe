@@ -1,8 +1,10 @@
 import random
+import time
 
 from model.AI import AI
 from model.Board import Board
 from model.Player import Player
+from model.enums.DifficultRatioAI import DifficultRatioAI
 from model.enums.DifficultyLevel import DifficultyLevel
 from model.enums.GameMode import GameMode
 from model.enums.I18N import I18N
@@ -112,11 +114,7 @@ def game_start(board, current_player, player1, player2):
     """
     while True:
         board.print_board()
-        if isinstance(current_player, AI):
-            row, col = current_player.make_move(board)
-        else:
-            move_position = get_player_move(current_player, board)
-            row, col = position_to_coordinates(move_position)
+        col, row = get_move(board, current_player)
 
         if not board.make_move(row, col, current_player.symbol):
             print(I18N.INVALID_MOVE.value)
@@ -136,6 +134,28 @@ def game_start(board, current_player, player1, player2):
             break
 
         current_player = player2 if current_player == player1 else player1
+
+
+def get_move(board, current_player):
+    """
+    Retrieves the next move from the current player. If the current player is AI,
+    it adds a delay to simulate the AI "thinking" before making a move. If the
+    current player is a human, it prompts the player for their move.
+
+    Args:
+        board (Board): The current state of the game board.
+        current_player (Player or AI): The player (human or AI) who is currently making a move.
+    Returns:
+        tuple: A tuple (col, row) representing the column and row indices on the board where the move is made.
+    """
+    if isinstance(current_player, AI):
+        print(I18N.AI_TURN.value)
+        time.sleep(DifficultRatioAI.THINKING.value)
+        row, col = current_player.make_move(board)
+    else:
+        move_position = get_player_move(current_player, board)
+        row, col = position_to_coordinates(move_position)
+    return col, row
 
 
 def play_tic_tac_toe():

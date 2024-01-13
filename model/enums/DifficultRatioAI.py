@@ -13,3 +13,6 @@ class DifficultRatioAI(Enum):
     HARD = 0.70
     """The HARD difficulty level has a ratio of 0.70, which means that the AI has a 70% chance of making the best 
     move."""
+
+    THINKING = 1.33
+    """The THINKING  level has a ratio of 1.33, which means that the AI has a 1.33 second delay in the play move."""

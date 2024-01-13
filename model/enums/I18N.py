@@ -73,3 +73,6 @@ class I18N(Enum):
     INVALID_POSITION = ("Invalid input or position already taken. Please enter a number between 1 and 9 for an empty "
                         "spot.")
     """ Error message for invalid position input. """
+
+    AI_TURN = "AI is thinking..."
+    """ Message for when the AI is thinking. """
