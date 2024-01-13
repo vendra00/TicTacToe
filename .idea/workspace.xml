@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c65578-42ff-4117-b6f4-0ebd7b220866" name="Changes" comment="added sound board">
-      <change afterPath="$PROJECT_DIR$/files/wav/hard.wav" afterDir="false" />
+    <list default="true" id="75c65578-42ff-4117-b6f4-0ebd7b220866" name="Changes" comment="added EVIL laugh sound">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AI.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/AI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Board.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/Board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/Player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enums/BoardStructure.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/BoardStructure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enums/DifficultRatioAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/DifficultRatioAI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enums/DifficultyLevel.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/DifficultyLevel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enums/GameMode.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/GameMode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enums/I18N.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/I18N.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enums/PiecePosition.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/PiecePosition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enums/Symbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/enums/Symbol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/BoardUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/BoardUtils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/SoundController.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/SoundController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/Validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/Validators.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +38,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -112,7 +126,7 @@
       <workItem from="1704893872159" duration="23000" />
       <workItem from="1704894156650" duration="68000" />
       <workItem from="1704894254829" duration="6288000" />
-      <workItem from="1704961272803" duration="17514000" />
+      <workItem from="1704961272803" duration="24103000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -202,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705099015407</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added EVIL laugh sound">
+      <option name="closed" value="true" />
+      <created>1705100882681</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705100882681</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,10 +242,11 @@
     <MESSAGE value="validators part 2" />
     <MESSAGE value="I18N and bug fix for the board position 9" />
     <MESSAGE value="added sound board" />
-    <option name="LAST_COMMIT_MESSAGE" value="added sound board" />
+    <MESSAGE value="added EVIL laugh sound" />
+    <option name="LAST_COMMIT_MESSAGE" value="added EVIL laugh sound" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TicTacToeGame$main.coverage" NAME="main Coverage Results" MODIFIED="1705100682753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TicTacToeGame$main.coverage" NAME="main Coverage Results" MODIFIED="1705141263032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TicTacToegame$main.coverage" NAME="main Coverage Results" MODIFIED="1704888197076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

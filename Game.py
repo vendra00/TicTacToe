@@ -1,4 +1,3 @@
-import os
 import random
 
 from model.AI import AI
@@ -14,16 +13,30 @@ from utils.Validators import validate_game_mode_input, validate_player_move_inpu
     validate_replay_input
 
 
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-
 def simple_ai_move(board):
+    """
+    Selects a move randomly from the available empty cells for the AI.
+
+    Args:
+        board (Board): The current state of the game board.
+
+    Returns:
+        tuple: The row and column of the chosen empty cell or (None, None) if no empty cells.
+    """
     empty_cells = [(i, j) for i in range(3) for j in range(3) if board.board[i][j] == ' ']
     return random.choice(empty_cells) if empty_cells else (None, None)
 
 
 def game_setup(game_mode):
+    """
+    Sets up the game based on the selected game mode, creating players or AI as needed.
+
+    Args:
+        game_mode (int): The selected game mode.
+
+    Returns:
+        tuple: Two Player objects representing player1 and player2.
+    """
     player1_name = input(I18N.P1_NAME_REGISTER.value)
     player1 = Player(player1_name, Symbol.CROSS.value)
     play_sound('select')
@@ -32,6 +45,15 @@ def game_setup(game_mode):
 
 
 def game_mode_setup(game_mode):
+    """
+    Configures the second player based on the game mode.
+
+    Args:
+        game_mode (int): The game mode (multiplayer or single player).
+
+    Returns:
+        Player: The second player, either a human or an AI.
+    """
     if game_mode == GameMode.Multiplayer.value:
         player2 = player_two_setup()
         return player2
@@ -41,6 +63,12 @@ def game_mode_setup(game_mode):
 
 
 def ai_difficult_setup():
+    """
+    Sets up the AI player with a chosen difficulty level.
+
+    Returns:
+        AI: The AI player with the selected difficulty level.
+    """
     while True:
         difficulty_input = input(I18N.CHOSE_AI_DIFFICULTY.value)
 
@@ -59,6 +87,12 @@ def ai_difficult_setup():
 
 
 def player_two_setup():
+    """
+    Sets up a human player as player two.
+
+    Returns:
+        Player: The second player.
+    """
     player2_name = input(I18N.P2_NAME_REGISTER.value)
     player2 = Player(player2_name, Symbol.CIRCLE.value)
     play_sound('select')
@@ -66,6 +100,15 @@ def player_two_setup():
 
 
 def game_start(board, current_player, player1, player2):
+    """
+    Starts and runs the game loop.
+
+    Args:
+        board (Board): The game board.
+        current_player (Player or AI): The current player.
+        player1 (Player): The first player.
+        player2 (Player or AI): The second player.
+    """
     while True:
         board.print_board()
         if isinstance(current_player, AI):
@@ -95,6 +138,10 @@ def game_start(board, current_player, player1, player2):
 
 
 def play_tic_tac_toe():
+    """
+    Initiates and controls the flow of the Tic Tac Toe game.
+    """
+    print(I18N.TITLE.value)
     play_midi_file('files/midi/Crystal_Doom.mid')
     while True:
         while True:
@@ -128,6 +175,16 @@ def play_tic_tac_toe():
 
 
 def get_player_move(current_player, board):
+    """
+    Obtains and validates the move from the current player.
+
+    Args:
+        current_player (Player): The player making the move.
+        board (Board): The current state of the game board.
+
+    Returns:
+        PiecePosition: The position on the board where the player wants to make a move.
+    """
     while True:
         try:
             move_input = input(f"{current_player.name} ({current_player.symbol}), {I18N.CHOSE_POSITION.value}")
@@ -146,6 +203,15 @@ def get_player_move(current_player, board):
 
 
 def position_to_coordinates(position):
+    """
+    Converts a PiecePosition enum value to board coordinates (row, col).
+
+    Args:
+        position (PiecePosition): The position on the board.
+
+    Returns:
+        tuple: Row and column indices corresponding to the position.
+    """
     row = (position.value - 1) // 3
     col = (position.value - 1) % 3
     return row, col
