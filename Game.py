@@ -192,7 +192,7 @@ def play_tic_tac_toe():
     Initiates and controls the flow of the Tic Tac Toe game.
     """
     print(I18N.TITLE.value)
-    play_midi_file('files/midi/Crystal_Doom.mid')
+    play_midi_file('files/midi/background.mid')
     while True:
         while True:
             game_mode_input = input(I18N.GAME_MODE.value)
